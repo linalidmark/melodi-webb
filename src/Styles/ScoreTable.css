@@ -5,7 +5,6 @@
     border: 2px solid #EE4598;
     width: 100%;
     display: table;
-    
 }
 
 .score-table thead {
@@ -41,8 +40,15 @@
 }
 
 .score-table td {
-    text-align: center;
+    align-items: center;
     padding: 10px;
     width: 20%;
 }
 
+.score-table .score-cell {
+    width: 100%;
+    text-align: center;
+    border: none;
+    color: #EE4598;
+    font-family: 'Cunia';
+}
