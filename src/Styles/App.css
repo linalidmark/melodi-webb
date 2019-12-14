@@ -3,23 +3,23 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 20vmin;
   pointer-events: none;
 }
 
 .App-title{
   color: #EE4598;
-  font-family: 'Cunia';
+  font-size: 20vmin;
+  font-family: 'Horizon-Regular';
 }
 
 .App-header {
   background-color: #F9F9F8;
-  min-height: 50vh;
+  min-height: 20vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
 }
 
 .App-link {

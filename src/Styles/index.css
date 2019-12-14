@@ -3,6 +3,11 @@
   src: local('Cunia'), url(../fonts/Cunia.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: 'Horizon-Regular';
+  src: local('Horizon-Regular'), url(../fonts/Horizon-Regular.ttf) format('truetype');
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
