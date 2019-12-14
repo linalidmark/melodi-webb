@@ -1,15 +1,16 @@
 .score-table {
     font-family: 'Cunia';
     display: flex;
-    background-color: #f0e6ef;
     color: #EE4598;
     border: 2px solid #EE4598;
     width: 100%;
+    display: table;
     
 }
 
 .score-table thead {
     width: 100%;
+    background-color: #f0e6ef;
 }
 
 .score-table thead tr {
@@ -22,6 +23,24 @@
 }
 
 .score-table th {
+    text-align: center;
+    padding: 10px;
+    width: 20%;
+}
+
+
+.score-table tbody tr {
+    display: flex;
+    width: 100%;
+    border-top: 2px solid #EE4598;
+}
+
+    
+.score-table td:not(:first-child){
+    border-left: 1px solid #EE4598;
+}
+
+.score-table td {
     text-align: center;
     padding: 10px;
     width: 20%;

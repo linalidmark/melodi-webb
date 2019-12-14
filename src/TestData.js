@@ -1,0 +1,1 @@
+export const testData = [{artist:"Benjamin Ingrosso", title:"Dance You Off", songScore:1, showScore:1, comment:"Hej"}];

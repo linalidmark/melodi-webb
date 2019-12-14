@@ -1,6 +1,8 @@
 import React from 'react';
 import { useTable } from 'react-table'
 import '../Styles/ScoreTable.css';
+import { testData } from '../TestData.js'
+import {ScoreCell} from '../Helpers/CellRenderHelpers.js';
 
 const columns = [
       {
@@ -13,11 +15,13 @@ const columns = [
       },
       {
         Header: 'Song',
-        accessor: 'songScore'
+        accessor: 'songScore',
+        Cell: ScoreCell
       },
       {
         Header: 'Show',
-        accessor: 'showScore'
+        accessor: 'showScore',
+        Cell: ScoreCell
       },
       {
         Header: 'Comment',
@@ -27,7 +31,6 @@ const columns = [
 
 
 function Table({ columns, data }) {
-    // Use the state and functions returned from useTable to build your UI
     const {
       getTableProps,
       getTableBodyProps,
@@ -69,6 +72,6 @@ function Table({ columns, data }) {
   
 export default class ScoreTable extends React.Component {
     render() {
-      return <Table columns={columns} data={[]} />;
+      return <Table columns={columns} data={testData} />;
     }
   }
