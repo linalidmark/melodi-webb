@@ -1,15 +1,24 @@
+:root {
+    --light-shade: #F9F9F8;
+    --primary-accent: #EE4598;
+    --main-color: #D57D98;
+    --second-accent: #FCBA03;
+    --dark-shade: #50325E;
+}
+
 .score-table {
+    background-color: var(--light-shade);
     font-family: 'Cunia';
     display: flex;
-    color: #EE4598;
-    border: 2px solid #EE4598;
+    color: var(--primary-accent);
     width: 100%;
     display: table;
+    border-spacing: 0;
 }
 
 .score-table thead {
+    color: var(--dark-shade);
     width: 100%;
-    background-color: #f0e6ef;
 }
 
 .score-table thead tr {
@@ -17,9 +26,6 @@
     width: 100%;
 }
     
-.score-table th:not(:first-child){
-    border-left: 1px solid #EE4598;
-}
 
 .score-table th {
     text-align: center;
@@ -31,12 +37,18 @@
 .score-table tbody tr {
     display: flex;
     width: 100%;
-    border-top: 2px solid #EE4598;
+    border-left: 2px solid var(--primary-accent);
+    border-right: 2px solid var(--primary-accent);
+    border-bottom: 2px solid var(--primary-accent);
+}
+
+.score-table tbody tr:first-child {
+    border-top: 2px solid var(--primary-accent);
 }
 
     
 .score-table td:not(:first-child){
-    border-left: 1px solid #EE4598;
+    border-left: 1px solid var(--primary-accent);
 }
 
 .score-table td {
@@ -48,11 +60,18 @@
     width: 20%;
 }
 
-.score-table .score-cell {
+.score-table .score-cell, .comment-cell {
+    height: 100%;
+    font-size: 44px;
+    background-color: var(--light-shade);
     width: 100%;
     text-indent: 10px;
     text-align: center;
     border: none;
-    color: #EE4598;
+    color: var(--primary-accent);
     font-family: 'Cunia';
+}
+
+::placeholder {
+    font-size: 16px;
 }

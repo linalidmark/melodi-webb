@@ -2,7 +2,7 @@ import React from 'react';
 import { useTable } from 'react-table'
 import '../Styles/ScoreTable.css';
 import { testData } from '../TestData.js'
-import {ScoreCell} from '../Helpers/CellRenderHelpers.js';
+import {ScoreCell, CommentCell} from '../Helpers/CellRenderHelpers.js';
 
 const columns = [
       {
@@ -25,7 +25,8 @@ const columns = [
       },
       {
         Header: 'Comment',
-        accessor: 'comment'
+        accessor: 'comment',
+        Cell: CommentCell
       }
     ]
 
