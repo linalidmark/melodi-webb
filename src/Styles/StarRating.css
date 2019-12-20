@@ -1,0 +1,51 @@
+
+  * {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+  }
+  
+  *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  }
+  
+  
+  /* Widget Container */
+  .rating-stars-widget-outer {
+    display: flex;
+    position: relative;
+    padding: 20px 0;
+    margin: 20px 0;
+  }
+  
+  
+  /*----------------------------
+  Rating Star Widget Style
+  -----------------------------*/
+  .rating-stars {
+    position: relative;
+    text-align: center;
+    clear: inline-start;
+  }
+  
+  .rating-stars .star {
+    display: inline-block;
+    padding: 0 5px;
+    font-size: 2.5em;
+    color: #ccc;
+    transition: 0.1s all ease-in-out;
+    transform: scale(0.8);
+  }
+  .rating-stars .star:hover,
+  .rating-stars .star.semi-active {
+    color: #ffd73e;
+    transform: scale(1);
+  }
+  
+  .rating-stars .star.active {
+    color: #FF9800;
+    transform: scale(1);
+  }
+  
