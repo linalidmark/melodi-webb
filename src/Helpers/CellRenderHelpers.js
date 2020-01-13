@@ -1,15 +1,33 @@
 import React from "react";
 import StarRating from "../Components/StarRating";
 
+
+export function handleChange(event) {
+  const data = "abc"
+  fetch( 'http://localhost:5000/api/v1', {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }, 
+    method: 'POST',
+    body: {
+      'user1':'1234'
+    }
+  });
+  console.log("handleChange")
+}
+
 export function ScoreCell() {
+  console.log("scorecell");
+  
   return (
-    <input
+    <input onChange={handleChange}
       className="score-cell"
       type="number"
       placeholder="score"
       min="1"
       max="10"
-    ></input>
+    ></input >
   );
 }
 

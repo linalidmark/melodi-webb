@@ -1,0 +1,1 @@
+connectionstring = 'mongodb+srv://Apptitlig:hejsan123@melodi-4onps.gcp.mongodb.net/test?retryWrites=true&w=majority'

@@ -7,7 +7,7 @@ var _ = require("lodash");
 function Star(props) {
   return (
     <div
-      className={`star ${props.value == 0 ? "semi-active" : ""} ${
+      className={`star ${props.value === 0 ? "semi-active" : ""} ${
         props.position <= props.rated ? "active" : ""
       } `}
       onMouseEnter={props.onMouseEnter}

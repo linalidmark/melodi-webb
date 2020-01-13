@@ -4,6 +4,7 @@ import './Styles/App.css';
 import Scoretable from './Components/ScoreTable';
 
 function App() {
+  console.log("App");
   return (
     <div className="App">
       <header className="App-header">
