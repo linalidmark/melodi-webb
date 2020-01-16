@@ -1,7 +1,7 @@
 from __future__ import print_function
 from pymongo import MongoClient
 from serversecrets import connectionstring
-from flask import Flask, json, g, request
+from flask import Flask, json, g, request, jsonify
 from flask_cors import CORS
 
 import sys
@@ -22,8 +22,8 @@ CORS(app)
 
 @app.route('/api/v1', methods=['POST'])
 def postTest():
-
-    print(request.form, file=sys.stderr)
+    jsondata = request.get_json()
+    print(jsondata, file=sys.stderr)
     return "json post succeeded", 200
 
 @app.route('/vote')
@@ -58,6 +58,7 @@ def vote():
 @app.route('/group/<groupID>')
 def group(groupID):
     collection = db['Mellofest']
+    print(collection, file=sys.stderr)
     cursor = collection.find({'groupID' : int(groupID)}, {'_id':0})
     a = []
     for document in cursor:
@@ -68,13 +69,15 @@ def group(groupID):
 @app.route("/all")
 def All():
     collection = db['Mellofest']
-    pipeline = [{"$unwind": "$artistNR"},
+
+    pipeline = [{"$unwind": "$artistNr"},
                 {"$group": 
-                    {"_id": "$artistNR",
+                    {"_id": "$artistNr",
                      "song": {"$avg": "$song"},
                      "show": {"$avg": "$show"}}
                 }
                ]
+    print(str(list(collection.aggregate(pipeline))), file=sys.stderr)
     return str(list(collection.aggregate(pipeline)))
 
 @app.route("/artist")

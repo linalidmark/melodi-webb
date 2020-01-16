@@ -10,9 +10,9 @@ export function handleChange(event) {
       'Content-Type': 'application/json'
     }, 
     method: 'POST',
-    body: {
-      'user1':'1234'
-    }
+    body: JSON.stringify({
+      song: event.target.value,
+  })
   });
   console.log("handleChange")
 }
