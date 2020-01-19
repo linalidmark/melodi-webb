@@ -2,6 +2,7 @@ import React from "react";
 import { useTable } from "react-table";
 import "../Styles/ScoreTable.css";
 import { testData } from "../TestData.js";
+import App from  "../App.js";
 import {
   ScoreCell,
   CommentCell,
@@ -15,7 +16,7 @@ const columns = [
   },
   {
     Header: "Title",
-    accessor: "title"
+    accessor: "Låt"
   },
   {
     Header: "Song",
@@ -75,6 +76,6 @@ function Table({ columns, data }) {
 
 export default class ScoreTable extends React.Component {
   render() {
-    return <Table columns={columns} data={testData} />;
+    return <Table columns={columns} data={App.artist} />;
   }
 }
