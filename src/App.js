@@ -3,6 +3,7 @@ import songbird from './songbird.svg';
 import './Styles/App.css';
 import Scoretable from './Components/ScoreTable';
 import { render } from 'react-dom';
+import ScoreCard from "./Components/ScoreCard";
 
 class App extends Component {
   
@@ -30,7 +31,7 @@ class App extends Component {
         Name: <input className="name"/>
         <br/>
         Group: <input className="group"/>
-        <Scoretable/>
+        <ScoreCard artist="FAITH KAKEMBO" title="Chasing rivers" />
       </div>
     );
   }

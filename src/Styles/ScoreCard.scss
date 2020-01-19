@@ -1,0 +1,88 @@
+$pink: #D93971;
+
+.score-card{
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    width: 85vw;
+    max-width: 700px;
+    color: $pink;
+    height: auto;
+    margin-bottom: 20px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.41);
+
+    .artist-image {
+        height: 35vh;
+        width: 100%;
+        background-image: url("../resources/faithkakembo.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .score-container{
+        overflow-wrap: break-word;
+        background: #FFFFFF;
+        height: auto;
+        width: 100%;
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+    
+            border-top: 1px solid $pink;
+            border-bottom: 1px solid $pink;
+            margin: 0 20px;
+            font-weight: 300;
+            font-size: 24px;
+        }
+
+        .scoring {
+            padding-left: 20px;
+
+            .star-scoring p, .comment-input p {
+                text-align: left;
+                font-size: 24px;
+                margin-bottom: 5px;
+            }
+
+            .star-scoring .rating-stars {
+                display: flex;
+                flex-flow: row wrap;
+            }
+
+            .comment-input {
+                display:flex;
+                flex-direction: column;
+                margin-right: 20px;
+
+                input {
+                    color: $pink;
+                    height: 35px;
+                    border: 1px solid $pink;
+                    float: left;
+                    margin-left: 5px;
+                    padding-left: 5px;
+                }
+            }
+            
+            button {
+                background: $pink;
+                font-weight: bold;
+                color: white;
+                border: 0 none;
+                border-radius: 10px;
+                cursor: pointer;
+                padding: 10px 10px;
+                margin: 10px 5px;
+            }
+
+        }
+
+    }
+
+}

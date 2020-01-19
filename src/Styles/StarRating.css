@@ -16,8 +16,6 @@
   .rating-stars-widget-outer {
     display: flex;
     position: relative;
-    padding: 20px 0;
-    margin: 20px 0;
   }
   
   
@@ -25,6 +23,7 @@
   Rating Star Widget Style
   -----------------------------*/
   .rating-stars {
+    display: flex;
     position: relative;
     text-align: center;
     clear: inline-start;
