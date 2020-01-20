@@ -28,14 +28,15 @@ $pink: #D93971;
         width: 100%;
 
         h1 {
+            text-transform: uppercase;
             font-size: 32px;
             margin-bottom: 15px;
         }
 
         h2 {
-    
             border-top: 1px solid $pink;
             border-bottom: 1px solid $pink;
+            padding: 5px;
             margin: 0 20px;
             font-weight: 300;
             font-size: 24px;

@@ -4,7 +4,7 @@ import StarRating from "../Components/StarRating";
 
 function ScoreCard(props) {
   return (
-    <div className="score-card">
+    <div className="score-card" id={props.id}>
       <div className="artist-image"></div>
       <div className="score-container">
         <h1>{props.artist}</h1>
