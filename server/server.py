@@ -6,10 +6,6 @@ from flask_cors import CORS
 
 import sys
 
-client = MongoClient(connectionstring)
-db = client['Mellofest']
-
-
 app = Flask(__name__)
 
 CORS(app)
@@ -18,7 +14,8 @@ CORS(app)
 #   first run 'export FLASK_APP=server.py' where server.py is located
 #   run application with 'flask run'
 #
-
+client = MongoClient(connectionstring)
+db = client['Mellofest']
 
 @app.route('/api/v1', methods=['POST'])
 def postTest():
@@ -26,20 +23,23 @@ def postTest():
     print(jsondata, file=sys.stderr)
     return "json post succeeded", 200
 
-@app.route('/vote')
+@app.route('/vote', methods=['POST'])
 def vote():
     print("Vote")
+    comment = None 
     collection = db['Mellofest']
     #user informaiton
+    jsondata = request.get_json()
+   
+    
     groupID = 5 #request.args.get('groupID')
     user = 'Betty' #request.args.get('user')
 
     #vote
     artistNr = 1 #request.args.get('artistNr')
-    song = 3 #request.args.get('song')
-    show = 3 #request.args.get('show')
-    comment = 'G' #request.args.get('comment')
-
+    song = jsondata['song']
+    show = jsondata['show']
+    comment = jsondata['comment']
 
     mydict = { "user": user,
                "groupID": groupID,
@@ -58,7 +58,6 @@ def vote():
 @app.route('/group/<groupID>')
 def group(groupID):
     collection = db['Mellofest']
-    print(collection, file=sys.stderr)
     cursor = collection.find({'groupID' : int(groupID)}, {'_id':0})
     a = []
     for document in cursor:
@@ -84,8 +83,10 @@ def All():
 def Artist():
     collection = db["Tabell"]
     cursor = collection.find({}, {'_id':0})
+    
     a = []
+
     for document in cursor:
         a.append(document)
-
-    return str(a)
+    
+    return jsonify(a)

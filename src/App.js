@@ -4,11 +4,12 @@ import "./Styles/App.css";
 import ScoreCard from "./Components/ScoreCard";
 import ScoreCardTabs from "./Components/ScoreCardTabs";
 
+
 class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      data: null,
       scoreCards: [
         {
           number: 1,
@@ -31,15 +32,24 @@ class App extends Component {
           title: "Move"
         }
       ]
+      artist: []
     };
+    this.getArtist = this.getArtist.bind(this);
+  
   }
 
   componentDidMount() {
-    fetch("http://localhost:5000/artist").then(data => this.setState({ data }));
-
-    console.log(this.data);
+    this.getArtist()
   }
 
+  getArtist() {
+    fetch('http://localhost:5000/artist')
+      .then(res => res.json())
+      .then((data) => {
+          this.setState({artist:data});
+      });
+}
+  
   render() {
     return (
       <div className="App">
