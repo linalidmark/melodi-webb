@@ -14,8 +14,8 @@ class ScoreCard extends Component {
 
     this.sendVote = this.sendVote.bind(this);
     this.setComment = this.setComment.bind(this);
-    this.setShow = this.setShow.bind(this);
-    this.setSong = this.setSong.bind(this);
+    this.updateShowScore = this.updateShowScore.bind(this);
+    this.updateSongScore = this.updateSongScore.bind(this);
   }
 
   sendVote() {
@@ -38,13 +38,14 @@ class ScoreCard extends Component {
     this.setState({ comment: event.target.value });
   }
 
-  setShow(event) {
-    this.setState({ show: event.target.value });
-    console.log(this.state);
+  updateSongScore(score) {
+    console.log(score);
+    this.setState({ song: score });
   }
 
-  setSong(event) {
-    this.setState({ song: event.target.value });
+  updateShowScore(score) {
+    console.log(score);
+    this.setState({ show: score });
   }
 
   render() {
@@ -57,12 +58,20 @@ class ScoreCard extends Component {
           <div className="scoring">
             <div className="star-scoring">
               <p>SONG</p>
-              <StarRating value={this.props.songScore} onClick={this.setSong} />
+              <StarRating
+                value={this.props.songScore}
+                onClick={this.setSong}
+                handleChange={this.updateSongScore}
+              />
             </div>
 
             <div className="star-scoring">
               <p>SHOW</p>
-              <StarRating value={this.props.showScore} onClick={this.setShow} />
+              <StarRating
+                value={this.props.showScore}
+                onClick={this.setShow}
+                handleChange={this.updateShowScore}
+              />
             </div>
 
             <div className="comment-input">

@@ -30,7 +30,6 @@ class StarRating extends React.Component {
 
   handleMouseOver(i) {
     let currentRating = this.state.rated;
-
     if (currentRating > 0) {
       const hoverRatedStars = this.state.stars.slice();
       _.fill(hoverRatedStars, 0, currentRating, i);
@@ -65,6 +64,7 @@ class StarRating extends React.Component {
       stars: clickedStar,
       rated: i
     });
+    this.props.handleChange(i);
   }
 
   renderStar(i) {
