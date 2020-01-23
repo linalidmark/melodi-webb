@@ -27,7 +27,6 @@ class StarRating extends React.Component {
       rated: 0
     };
   }
-
   handleMouseOver(i) {
     let currentRating = this.state.rated;
     if (currentRating > 0) {

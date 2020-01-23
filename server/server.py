@@ -31,7 +31,7 @@ def vote():
     #user informaiton
     jsondata = request.get_json()
    
-    
+    print(jsondata, file=sys.stderr)
     groupID = 5 #request.args.get('groupID')
     user = 'Betty' #request.args.get('user')
 
@@ -49,7 +49,7 @@ def vote():
                "comment": comment }
 
 
-    x = collection.find_and_modify({"user": user, "groupID": groupID,"artistNR": artistNr},
+    x = collection.find_and_modify({"user": user, "groupID": groupID,"artistNr": artistNr},
                                    mydict,
                                    upsert=True)
 

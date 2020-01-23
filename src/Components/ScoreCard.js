@@ -36,7 +36,9 @@ class ScoreCard extends Component {
 
   setComment(event) {
     this.setState({ comment: event.target.value });
+    console.log("event");
   }
+
 
   updateSongScore(score) {
     console.log(score);
@@ -63,6 +65,7 @@ class ScoreCard extends Component {
                 onClick={this.setSong}
                 handleChange={this.updateSongScore}
               />
+
             </div>
 
             <div className="star-scoring">
@@ -72,6 +75,7 @@ class ScoreCard extends Component {
                 onClick={this.setShow}
                 handleChange={this.updateShowScore}
               />
+
             </div>
 
             <div className="comment-input">
@@ -84,5 +88,6 @@ class ScoreCard extends Component {
       </div>
     );
   }
+
 }
 export default ScoreCard;

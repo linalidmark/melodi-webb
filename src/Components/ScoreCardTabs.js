@@ -7,7 +7,6 @@ function ScoreCardTabs({ scoreCards }) {
     var target = e.target.href;
     window.location = target;
     var current = target.split("/").slice(-1)[0];
-    console.log(current);
     var list = document.getElementsByTagName("a");
     for (let item of list) {
       item.classList.remove("active");
