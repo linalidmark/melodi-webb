@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import songbird from "./songbird.svg";
 import "./Styles/App.css";
 import ScoreCard from "./Components/ScoreCard";
+import ScoreTable from "./Components/ScoreTable";
 import ScoreCardTabs from "./Components/ScoreCardTabs";
 
 class App extends Component {
@@ -9,21 +10,45 @@ class App extends Component {
     super(props);
 
     this.state = {
-      artist: []
+      artist: [],
+      group: [{artistNr: "", song: 1, show: 1, user: ""}],
+      all: [{artistNr: "", song: 1, show: 1, user: ""}]
     };
     this.getArtist = this.getArtist.bind(this);
+    this.getGroupVote = this.getGroupVote.bind(this);
+    this.getAllVotes = this.getAllVotes.bind(this);
   }
 
   componentDidMount() {
     this.getArtist();
+    this.getGroupVote();
+    this.getAllVotes();
   }
+
+  getGroupVote () {
+    fetch("http://localhost:5000/group/5")
+    .then(res => res.json())
+    .then(data => {
+      this.setState({ group: data });
+    });
+  }
+
+  
+  getAllVotes() {
+    fetch("http://localhost:5000/all")
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ all: data });
+    });
+  }
+
 
   getArtist() {
     fetch("http://localhost:5000/artist")
       .then(res => res.json())
       .then(data => {
         this.setState({ artist: data });
-      });
+    });
   }
 
   render() {
@@ -39,6 +64,8 @@ class App extends Component {
             {this.state.artist.map(card => {
               return (
                 <ScoreCard
+                  key={card.number}
+                  number={card.number} //jag fattar inte varför detta fungerar, o inte props.key
                   id={"#" + card.number}
                   artist={card.artist}
                   title={card.title}
@@ -47,6 +74,8 @@ class App extends Component {
             })}
           </div>
         </div>
+        <ScoreTable vote={this.state.group} number={this.state.artist.number}/>
+        <ScoreTable vote={this.state.all} number={this.state.artist.number}/>
       </div>
     );
   }

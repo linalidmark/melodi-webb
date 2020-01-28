@@ -20,9 +20,9 @@ function ScoreCardTabs({ scoreCards }) {
   }
 
   const content = scoreCards.map(function(card) {
-    if (card.number == 1) {
+    if (card.number === 1) {
       return (
-        <li>
+        <li key={card.number}>
           <a className="active" href={"#" + card.number} onClick={handleClick}>
             {card.number}
           </a>
@@ -30,7 +30,7 @@ function ScoreCardTabs({ scoreCards }) {
       );
     } else {
       return (
-        <li>
+        <li key={card.number}>
           <a href={"#" + card.number} onClick={handleClick}>
             {card.number}
           </a>

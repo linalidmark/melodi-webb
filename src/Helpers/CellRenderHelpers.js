@@ -4,10 +4,8 @@ import StarRating from "../Components/StarRating";
 
 
 export function ScoreCell() {
-  console.log("scorecell");
-  
   return (
-    <input onChange={handleChange}
+    <input
       className="score-cell"
       type="number"
       placeholder="score"

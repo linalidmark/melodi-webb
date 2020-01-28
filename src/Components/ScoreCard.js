@@ -26,27 +26,25 @@ class ScoreCard extends Component {
       },
       method: "POST",
       body: JSON.stringify({
+        artist: this.props.artist,
+        title: this.props.title,
+        number: this.props.number,
         song: this.state.song,
         show: this.state.show,
         comment: this.state.comment
       })
     });
-    console.log("handleChange");
   }
 
   setComment(event) {
     this.setState({ comment: event.target.value });
-    console.log("event");
   }
 
-
   updateSongScore(score) {
-    console.log(score);
     this.setState({ song: score });
   }
 
   updateShowScore(score) {
-    console.log(score);
     this.setState({ show: score });
   }
 

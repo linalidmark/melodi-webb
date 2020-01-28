@@ -17,39 +17,34 @@ CORS(app)
 client = MongoClient(connectionstring)
 db = client['Mellofest']
 
-@app.route('/api/v1', methods=['POST'])
-def postTest():
-    jsondata = request.get_json()
-    print(jsondata, file=sys.stderr)
-    return "json post succeeded", 200
-
 @app.route('/vote', methods=['POST'])
 def vote():
-    print("Vote")
-    comment = None 
     collection = db['Mellofest']
     #user informaiton
     jsondata = request.get_json()
    
     print(jsondata, file=sys.stderr)
     groupID = 5 #request.args.get('groupID')
-    user = 'Betty' #request.args.get('user')
+    user = 'Testar' #request.args.get('user')
 
     #vote
-    artistNr = 1 #request.args.get('artistNr')
+    artist = jsondata['artist']
+    title = jsondata['title']
     song = jsondata['song']
     show = jsondata['show']
     comment = jsondata['comment']
+    number = jsondata['number']
 
     mydict = { "user": user,
                "groupID": groupID,
-               "artistNr": artistNr,
+               "artist": artist,
+               "title": title,
                "song": song,
                "show": show,
-               "comment": comment }
+               "comment": comment,
+               "number": int(number) }
 
-
-    x = collection.find_and_modify({"user": user, "groupID": groupID,"artistNr": artistNr},
+    x = collection.find_and_modify({"user": user, "groupID": groupID,"artist": artist, "title": title},
                                    mydict,
                                    upsert=True)
 
@@ -62,22 +57,22 @@ def group(groupID):
     a = []
     for document in cursor:
         a.append(document)
+        print(document, file=sys.stderr)
+    print(jsonify(a), file=sys.stderr)
+    return jsonify(a)
 
-    return str(a)
 
 @app.route("/all")
 def All():
     collection = db['Mellofest']
 
-    pipeline = [{"$unwind": "$artistNr"},
+    pipeline = [{"$unwind": "$number"},
                 {"$group": 
-                    {"_id": "$artistNr",
+                    {"_id": "$number",
                      "song": {"$avg": "$song"},
                      "show": {"$avg": "$show"}}
-                }
-               ]
-    print(str(list(collection.aggregate(pipeline))), file=sys.stderr)
-    return str(list(collection.aggregate(pipeline)))
+                }]
+    return jsonify(list(collection.aggregate(pipeline)))
 
 @app.route("/artist")
 def Artist():
@@ -85,7 +80,6 @@ def Artist():
     cursor = collection.find({}, {'_id':0})
     
     a = []
-
     for document in cursor:
         a.append(document)
     
