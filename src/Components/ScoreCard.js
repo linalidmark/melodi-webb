@@ -9,13 +9,18 @@ class ScoreCard extends Component {
     this.state = {
       song: 0,
       show: 0,
-      comment: ""
+      comment: "",
+      active: this.props.active
     };
 
     this.sendVote = this.sendVote.bind(this);
     this.setComment = this.setComment.bind(this);
     this.updateShowScore = this.updateShowScore.bind(this);
     this.updateSongScore = this.updateSongScore.bind(this);
+  }
+
+  componentWillReceiveProps({ active }) {
+    this.setState({ ...this.state, active })
   }
 
   sendVote() {
@@ -49,8 +54,9 @@ class ScoreCard extends Component {
   }
 
   render() {
+    var className = this.state.active ? "score-card active-card" : "score-card";
     return (
-      <div id={this.props.id} className="score-card">
+      <div id={this.props.id} className={className}>
         <div className="artist-image"></div>
         <div className="score-container">
           <h1>{this.props.artist}</h1>

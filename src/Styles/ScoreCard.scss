@@ -1,6 +1,11 @@
 $pink: #D93971;
 
 .score-card{
+
+    &:not(.active-card){
+        display: none;
+    }
+
     font-family: 'Raleway', sans-serif;
     font-style: normal;
     font-weight: bold;

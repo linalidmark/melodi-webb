@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import songbird from "./songbird.svg";
 import "./Styles/App.css";
-import ScoreCard from "./Components/ScoreCard";
 import ScoreCardTabs from "./Components/ScoreCardTabs";
 
 class App extends Component {
@@ -58,20 +57,7 @@ class App extends Component {
         Name: <input className="name" />
         <br />
         Group: <input className="group" />
-        <div className="scorecard-container">
-          <ScoreCardTabs scoreCards={this.state.scoreCards} />
-          <div id="content">
-            {this.state.scoreCards.map(card => {
-              return (
-                <ScoreCard
-                  id={"#" + card.number}
-                  artist={card.artist}
-                  title={card.title}
-                />
-              );
-            })}
-          </div>
-        </div>
+        <ScoreCardTabs scoreCards={this.state.scoreCards} />
       </div>
     );
   }
