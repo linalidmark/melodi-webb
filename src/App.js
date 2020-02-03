@@ -4,6 +4,7 @@ import "./Styles/App.css";
 import ScoreCard from "./Components/ScoreCard";
 import ScoreTable from "./Components/ScoreTable";
 import ScoreCardTabs from "./Components/ScoreCardTabs";
+import {columnsGroup, columnsAll} from "./Helpers/ColumnsHelper.js";
 
 class App extends Component {
   constructor(props) {
@@ -74,8 +75,8 @@ class App extends Component {
             })}
           </div>
         </div>
-        <ScoreTable vote={this.state.group} number={this.state.artist.number}/>
-        <ScoreTable vote={this.state.all} number={this.state.artist.number}/>
+        <ScoreTable vote={this.state.group} columns={columnsGroup} number={this.state.artist.number}/>
+        <ScoreTable vote={this.state.all}   columns={columnsAll}   number={this.state.artist.number}/>
       </div>
     );
   }

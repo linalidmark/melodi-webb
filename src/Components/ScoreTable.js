@@ -1,32 +1,6 @@
 import React, {Component} from "react";
-import { useTable } from "react-table";
+import { useTable, useSortBy } from "react-table";
 import "../Styles/ScoreTable.css";
-
-const columns = [
-  {
-    Header: "Artist",
-    accessor: "artist"
-  },
-  {
-    Header: "Title",
-    accessor: "title"
-  },{
-    Header: "User",
-    accessor: "user"
-  },
-  {
-    Header: "Song",
-    accessor: "song",
-  },
-  {
-    Header: "Show",
-    accessor: "show",
-  },{
-    Header: "Comment",
-    accessor: "comment",
-  }
-];
-
 
  class ScoreTable extends Component {
  
@@ -40,7 +14,9 @@ const columns = [
     } = useTable({
       columns,
       data
-    });
+    }, 
+    useSortBy
+    );
 
     return (
       <table className="score-table" {...getTableProps()}>
@@ -48,7 +24,12 @@ const columns = [
           {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
-                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {column.render("Header")}
+                  <span>
+                    {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
+                  </span>
+                </th>
               ))}
             </tr>
           ))}
@@ -70,7 +51,7 @@ const columns = [
   }
 
   render() {
-    return <this.table columns={columns} data={this.props.vote} />;
+    return <this.table columns={this.props.columns} data={this.props.vote} />;
   }
 }
 

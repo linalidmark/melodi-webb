@@ -66,12 +66,13 @@ def group(groupID):
 def All():
     collection = db['Mellofest']
 
-    pipeline = [{"$unwind": "$number"},
-                {"$group": 
-                    {"_id": "$number",
-                     "song": {"$avg": "$song"},
-                     "show": {"$avg": "$show"}}
-                }]
+    pipeline = [{ "$group": 
+                    {"_id": "$number", 
+                    "song": {"$avg": "$song"},
+                    "show": {"$avg": "$show"},
+                    "artist": {"$addToSet": "$artist"},
+                    "title": {"$addToSet": "$title"}}},
+               { "$project": {"Name": "$_id", "artist": 1, "title": 1, "song": 1, "show": 1}} ]
     return jsonify(list(collection.aggregate(pipeline)))
 
 @app.route("/artist")
